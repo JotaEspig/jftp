@@ -26,3 +26,8 @@ func MoveFile(filename string, newFilename string) error {
 func RenameFile(oldFilename string, newFilename string) error {
 	return os.Rename(oldFilename, newFilename)
 }
+
+func GetFileStats(filename string) (os.FileInfo, error) {
+	stats, err := os.Stat(filename)
+	return stats, err
+}
