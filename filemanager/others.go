@@ -3,8 +3,7 @@ package filemanager
 import "os"
 
 func DeleteFile(filename string) error {
-	err := os.Remove("test.txt")
-	return err
+	return os.Remove("test.txt")
 }
 
 func CopyFile(filenameToCopy string, newFilename string) error {
