@@ -15,6 +15,14 @@ func CopyFile(filenameToCopy string, newFilename string) error {
 	return CreateAndWriteFile(newFilename, string(content))
 }
 
-func RenameFile(filename string, newFilename string) error {
-	return os.Rename(filename, newFilename)
+func MoveFile(filename string, newFilename string) error {
+	err := CopyFile(filename, newFilename)
+	if err != nil {
+		return err
+	}
+	return DeleteFile(filename)
+}
+
+func RenameFile(oldFilename string, newFilename string) error {
+	return os.Rename(oldFilename, newFilename)
 }
