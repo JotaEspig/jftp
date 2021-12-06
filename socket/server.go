@@ -57,10 +57,10 @@ func (s *Server) handleConnection(conn net.Conn) {
 	for {
 		data, err := bufio.NewReader(conn).ReadString('\n')
 		if err != nil {
-			log.Println(err)
+			log.Printf("%v: %v\n", conn.LocalAddr().String(), err)
 			return
 		}
-		log.Printf("%v sent: %v\n", conn.LocalAddr().String(), string(data))
+		log.Printf("%v sent: %v", conn.LocalAddr().String(), string(data))
 		conn.Write([]byte(data))
 	}
 }
